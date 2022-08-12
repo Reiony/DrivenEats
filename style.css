@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:wght@300;400;700&display=swap');
 
 body{
-    width: 414px;
+    width: 100%;
     background: #E5E5E5;
 }
 
@@ -144,7 +144,7 @@ header{
 footer{
     position:fixed;
     bottom:0px;
-    width: 414px;
+    width: 100%;
     height: 92px;
     background: #FFFFFF;
     display:flex;
@@ -170,6 +170,3 @@ footer button p{
     letter-spacing: 0.018em;
     color: #FFFFFF;
 }
-/*.main{
-
-} */
