@@ -75,21 +75,47 @@ function chooseDessert(value){
 
 
 function enableButton(){
-    botaozin=document.querySelector("footer button p");
-    botaozinho=document.querySelector("footer button");
+    const botaozin=document.querySelector("footer button p");
+    const botaozinho=document.querySelector("footer button");
     if (dishprice !==undefined && drinkprice!==undefined && dessertprice!==undefined){
         botaozin.innerHTML= "Fechar Pedido";
         botaozin.classList.add("showing");
         botaozinho.classList.add("yesyoucan");
     }
 }
-let totalfinal=0;
+let totalfinal;
 
 function sumtotal(){
-    valor1=dishprice;
-    valor2=drinkprice;
-    valor3=dessertprice;
-    soma= Number(valor1) + Number(valor2) + Number(valor3);
-    totalfinal=`R$:${soma.toFixed(2)}`
-    console.log(totalfinal);
+    if (dishprice !==undefined && drinkprice!==undefined && dessertprice!==undefined){
+        valor1=dishprice;
+        valor2=drinkprice;
+        valor3=dessertprice;
+        soma= Number(valor1) + Number(valor2) + Number(valor3);
+        totalfinal=`R$:${soma.toFixed(2)}`
+        totalfinal=totalfinal.replace(".", ",");
+        console.log(totalfinal);
+    }
+    
+}
+let confereverde;
+let name;
+let endereço;
+
+function finishorder() {
+    const botaozinho=document.querySelector("footer button");
+    const confereverde= botaozinho.querySelector("yesyoucan");
+    const name = prompt('Qual é o seu nome?');
+    const endereço = prompt('Qual é o seu endereço?');
+    sumtotal();
+
+    if (confereverde!==undefined){
+        window.open("https://wa.me/5521997704352?text=" + encodeURIComponent(`Olá, gostaria de fazer o pedido:
+        - Prato: ${dishname}
+        - Bebida: ${drinkname}
+        - Sobremesa: ${dessertname}
+        Total:${totalfinal}
+        Nome:${name}
+        Endereço:${endereço}`), '_blank');
+    }
+    
 }
